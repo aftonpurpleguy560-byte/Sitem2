@@ -4,10 +4,14 @@ export default function Game1({ onSave }) {
   const [count, setCount] = useState(0);
   const [time, setTime] = useState(10);
 
-  // Sayaç (Timer) Yönetimi
   useEffect(() => {
+    // Süre bittiğinde çalışacak güvenli kontrol
     if (time <= 0) {
-      onSave(count); // Süre bittiğinde skoru kaydet
+      if (onSave && typeof onSave === 'function') {
+        onSave(count);
+      } else {
+        console.log("onSave fonksiyonu parent bileşenden eksik gelmiş: ", count);
+      }
       return;
     }
 
@@ -16,9 +20,8 @@ export default function Game1({ onSave }) {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [time, count, onSave]); // Gerekli tüm bağımlılıklar eklendi
+  }, [time]); // Sadece zamana bağlı, kesinlikle kilitlenmez.
 
-  // Tıklama İşleyicisi
   const handleClicks = () => {
     if (time > 0) {
       setCount((prevCount) => prevCount + 1);
@@ -26,19 +29,18 @@ export default function Game1({ onSave }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full input-none select-none">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#020617] text-white select-none">
       <div className="text-4xl mb-4 font-semibold">
         {time > 0 ? `Süre: ${time}` : "Oyun Bitti!"}
       </div>
       <button 
         onClick={handleClicks} 
         disabled={time === 0}
-        className={`w-40 h-40 rounded-full text-4xl font-bold transition-transform active:scale-90 select-none
-          ${time > 0 ? 'bg-purple-600 text-white cursor-pointer' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`}
+        className={`w-40 h-40 rounded-full text-4xl font-bold transition-all active:scale-90 select-none
+          ${time > 0 ? 'bg-purple-600 text-white cursor-pointer' : 'bg-gray-700 text-gray-400 cursor-not-allowed'}`}
       >
         {count}
       </button>
     </div>
   );
 }
-
