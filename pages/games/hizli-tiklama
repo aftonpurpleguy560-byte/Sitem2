@@ -1,0 +1,44 @@
+import React, { useState, useEffect } from 'react';
+
+export default function Game1({ onSave }) {
+  const [count, setCount] = useState(0);
+  const [time, setTime] = useState(10);
+
+  // Sayaç (Timer) Yönetimi
+  useEffect(() => {
+    if (time <= 0) {
+      onSave(count); // Süre bittiğinde skoru kaydet
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setTime((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [time, count, onSave]); // Gerekli tüm bağımlılıklar eklendi
+
+  // Tıklama İşleyicisi
+  const handleClicks = () => {
+    if (time > 0) {
+      setCount((prevCount) => prevCount + 1);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center h-full input-none select-none">
+      <div className="text-4xl mb-4 font-semibold">
+        {time > 0 ? `Süre: ${time}` : "Oyun Bitti!"}
+      </div>
+      <button 
+        onClick={handleClicks} 
+        disabled={time === 0}
+        className={`w-40 h-40 rounded-full text-4xl font-bold transition-transform active:scale-90 select-none
+          ${time > 0 ? 'bg-purple-600 text-white cursor-pointer' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`}
+      >
+        {count}
+      </button>
+    </div>
+  );
+}
+
