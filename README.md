@@ -1,8 +1,8 @@
 # 💜 Moradam Oyun Portalı (v2.0)
 > **"Geri Döndüm. Daha Güçlü, Daha Hızlı ve Tamamen Tablet Gücüyle!"**
 ---
-## ⚡ Geri Dönüş Notu (Nisan 2026)
-Bu proje, yaklaşık **3 aylık** bir geliştirme arasından sonra tekrar küllerinden doğuyor. Bir süre önce yapımını durdurmuş olsam da, **Moradam** projesini yarım bırakmaya niyetim yok. Kodlar güncellendi, hatalar (o meşhur kırmızı X'ler) temizlendi ve tasarım tamamen senin için optimize edildi.
+## ⚡ Geri Dönüş Notu (Mayıs 2026)
+Bu proje, yaklaşık **4 aylık** bir geliştirme arasından sonra tekrar küllerinden doğuyor. Bir süre önce yapımını durdurmuş olsam da, **Moradam** projesini yarım bırakmaya niyetim yok. Kodlar güncellendi, hatalar temizlendi ve tasarım tamamen senin için optimize edildi.
 **Hala buradayım, hala kodluyorum.**
 ---
 ## 🚀 Proje Hakkında
